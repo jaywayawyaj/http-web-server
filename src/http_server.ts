@@ -1,7 +1,9 @@
 import * as http from "http";
 
 const server: http.Server = http.createServer((req: http.IncomingMessage, res: http.ServerResponse) => {
-    res.write("Hello world");
+    const headers: http.OutgoingHttpHeaders = { 'Content-Type': 'text/plain' };
+    res.writeHead(200, headers)
+    res.write('<h1>Welcome to my TypeScript Server!</h1>');
     res.end();
 })
 

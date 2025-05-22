@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/basic_server.js",
+    "start": "node dist/http_server.js",
     "dev": "tsc --watch"
   },
   "devDependencies": {
