@@ -16,7 +16,18 @@ const server: http.Server = http.createServer(async (req: http.IncomingMessage, 
             res.write('<h1>500 Internal Server Error</h1><p>Could not read file.</p>');
             res.end();
         }
-    } else {
+    } else if (url === '/about') {
+        try {
+          const data: string = await fs.readFile('about.html', 'utf8');
+          res.writeHead(200, headers);
+          res.write(data);
+          res.end();
+        } catch (err: unknown) {
+          res.writeHead(500, headers);
+          res.write('<h1>500 Server Error</h1><p>Could not read file.</p>');
+          res.end();
+        }
+      } else {
         res.writeHead(404, headers);
         res.write('<h1>404 Not Found</h1><p>The page you requested does not exist.</p>');
         res.end();
